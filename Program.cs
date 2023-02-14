@@ -6,7 +6,7 @@ namespace User_Registration
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(" User Registration form ");
+            Console.WriteLine(" User Registration form \n");
             Form fill=new Form();
             fill.form();
         }
