@@ -7,8 +7,8 @@ namespace User_Registration
 {
     public class Pattern 
     {
-        public static string Name = "^[A-Z][a-z]{3,}$";
-    
+        public static string Name = "^[A-Z][a-z]{2,}$";
+        public static string LastName = "^[A-Z][a-z]{2,}$";
     }
     public class Form
     {
@@ -31,7 +31,30 @@ namespace User_Registration
                 {
                     Console.WriteLine("done"); 
                 }
-            }                            
+
+            }
+            Regex lastname = new Regex(Pattern.Name);
+            check = false;
+            Console.WriteLine("Last name starts with Cap and has minimum 3 characters");
+            while (!check)
+            {
+                Console.Write("Enter your Last Name :");
+                string userLastName = Console.ReadLine();
+                check = lastname.IsMatch(userLastName);
+
+                if (check==false)
+                {
+                    Console.WriteLine("\nplease follow - Last name starts with Cap and has minimum 3 characters ");
+                }
+                else
+                {
+                    Console.WriteLine("done"); 
+                }
+
+            }                        
+
+
+
         }
 
     }
