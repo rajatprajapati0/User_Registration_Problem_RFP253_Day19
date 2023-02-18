@@ -15,8 +15,8 @@ namespace User_Registration
 
        
         
-        public static string MobileNumber = "^[+]91[ ][6-9]{1}[0-9]{9}$";
-        public static string PassWord = "^[a-z 0-9 !@#$%&_-]{8,}$";
+        public static string MobileNumber = @"^[+]91[ ][6-9]{1}[0-9]{9}$";
+        public static string PassWord = @"^(?=.*[A-Z])[a-z A-Z 0-9 !@#*+%&_-]{8,}$";
 
     }
     public class Form
@@ -104,7 +104,7 @@ namespace User_Registration
             }
             Regex password = new Regex(Pattern.PassWord);
             check = false;
-            Console.WriteLine("\nMake Password minimum 8 characters required  ");
+            Console.WriteLine("\nMake Password minimum 8  minimum 1Uppercase characters required  ");
 
             while (!check)
             {
@@ -113,7 +113,7 @@ namespace User_Registration
                 check = password.IsMatch(passKey);
                 if (check == false) 
                 {
-                   Console.WriteLine("\nPlease follow -  Password must have minimum 8 characters ");
+                   Console.WriteLine("\nPlease follow -  Password must have minimum 8 ,1 upper case characters ");
                 
                 }
                 else
