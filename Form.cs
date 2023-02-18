@@ -10,11 +10,13 @@ namespace User_Registration
         public static string Name = "^[A-Z][a-z]{2,}$";
         public static string LastName = "^[A-Z][a-z]{2,}$";
         
-        public static string Email = @"^([a-z0-9]{1,}.?[a-z0-9]{3,}[@][a-z]{3,}.(com|in|net|com.au|com.com)|
-                                        |[a-z.0-9]{3,}[@][a-z0-9]{1,}.(com.au|com.com|in|com|net)|
-                                        |[a-z.?0-9]{3,}.?[@][a-z0-9]{1,}.(com.au|com.com|in|com|net))$";
+        public static string Email = @"^(?=[a-z])[a-z 0-9.!#+$%&_-]{3,}[@][a-z0-9]{1,6}.(com|com.com|io|com.au|net|org)$"
+        ;
 
+       
+        
         public static string MobileNumber = "^[+]91[ ][6-9]{1}[0-9]{9}$";
+        public static string PassWord = "^[a-z 0-9 !@#$%&_-]{8,}$";
 
     }
     public class Form
@@ -22,7 +24,7 @@ namespace User_Registration
         public void form()
         {
             Regex name = new Regex(Pattern.Name);
-            bool check= false;
+            bool check = false;
             Console.WriteLine("\nFirst name starts with Cap and has minimum 3 characters");
             while (!check)
             {
@@ -30,17 +32,17 @@ namespace User_Registration
                 string userName = Console.ReadLine();
                 check = name.IsMatch(userName);
 
-                if (check==false)
+                if (check == false)
                 {
                     Console.WriteLine("\nplease follow - First name starts with Cap and has minimum 3 characters ");
                 }
                 else
                 {
-                    Console.WriteLine("******done"); 
+                    Console.WriteLine("******done");
                 }
 
             }
-            Regex lastname = new Regex(Pattern.LastName );
+            Regex lastname = new Regex(Pattern.LastName);
             check = false;
             Console.WriteLine("\nLast name starts with Cap and has minimum 3 characters");
             while (!check)
@@ -49,20 +51,20 @@ namespace User_Registration
                 string userLastName = Console.ReadLine();
                 check = lastname.IsMatch(userLastName);
 
-                if (check==false)
+                if (check == false)
                 {
                     Console.WriteLine("\nplease follow - Last name starts with Cap and has minimum 3 characters ");
                 }
                 else
                 {
-                    Console.WriteLine("*****done"); 
+                    Console.WriteLine("*****done");
                 }
 
             }
 
             Regex email = new Regex(Pattern.Email);
-             check = false;
-            
+            check = false;
+
             while (!check)
             {
                 Console.Write("Enter your email :");
@@ -100,8 +102,26 @@ namespace User_Registration
                 }
 
             }
+            Regex password = new Regex(Pattern.PassWord);
+            check = false;
+            Console.WriteLine("\nMake Password minimum 8 characters required  ");
 
+            while (!check)
+            {
+                Console.Write("Enter password :");
+                string passKey = Console.ReadLine();
+                check = password.IsMatch(passKey);
+                if (check == false) 
+                {
+                   Console.WriteLine("\nPlease follow -  Password must have minimum 8 characters ");
+                
+                }
+                else
+                {
+                    Console.WriteLine("*****done");
+                }
 
+            } 
         }
 
     }
