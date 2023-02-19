@@ -10,11 +10,10 @@ namespace User_Registration
         public static string Name = "^[A-Z][a-z]{2,}$";
         public static string LastName = "^[A-Z][a-z]{2,}$";
         
-        public static string Email = @"^(?=[a-z])[a-z 0-9.!#+$%&_-]{3,}[@][a-z0-9]{1,6}.(com|com.com|io|com.au|net|org)$"
-        ;
+        public static string Email = @"^(?=[a-z])[a-z 0-9.!#+$%&_-]{3,}[@][a-z 0-9]{1,6}.(com|com.com|io|com.au|net|org)$" ;
 
         public static string MobileNumber = @"^[+]91[ ][6-9]{1}[0-9]{9}$";
-        public static string PassWord = @"^(?=.*[A-Z](?=.*[0-9]))[a-z A-Z 0-9 !@#*+%&_-]{8,}$";
+        public static string PassWord = @"^((?=.*[A-Z])(?=.*[0-9])(?=.*[a-z])(?=.*[!#@*+&%_-]))[a-z A-Z 0-9 !@#*+%&_-]{8,}$";
 
     }
     public class Form
@@ -102,7 +101,7 @@ namespace User_Registration
             }
             Regex password = new Regex(Pattern.PassWord);
             check = false;
-            Console.WriteLine("\nMake Password minimum 8  minimum 1Uppercase 1 numeric characters required  ");
+            Console.WriteLine("\nMake Password minimum 8  minimum 1Uppercase, 1 lowercase, 1 numeric, 1 special characters required  ");
 
             while (!check)
             {
@@ -111,14 +110,14 @@ namespace User_Registration
                 check = password.IsMatch(passKey);
                 if (check == false) 
                 {
-                   Console.WriteLine("\nPlease follow -  Password must have minimum 8 ,1 upper case 1 numeric characters ");
+                   Console.WriteLine("\nPlease follow -  Password must have minimum 8 ,1 upper case, 1 lower case, 1 numeric, 1 special characters ");
                 
                 }
                 else
                 {
                     Console.WriteLine("*****done");
                 }
-
+                
             } 
         }
 
